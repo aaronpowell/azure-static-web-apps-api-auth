@@ -1,0 +1,43 @@
+{
+  "name": "@aaronpowell/static-web-apps-api-auth",
+  "version": "1.0.0",
+  "description": "A package to make it easier to work with Azure Static Web Apps auth in the API backend",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "keywords": [
+    "azure",
+    "serverless",
+    "azure-functions",
+    "staticwebapps"
+  ],
+  "author": {
+    "email": "me+github@aaron-powell.com",
+    "name": "Aaron Powell",
+    "url": "https://www.aaron-powell.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@azure/functions": "^1.2.2",
+    "@types/node": "^14.14.20",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.21.5",
+    "husky": "^4.3.6",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && npm run lint"
+    }
+  }
+}
