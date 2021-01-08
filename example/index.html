@@ -54,10 +54,22 @@
       .hidden {
         display: none;
       }
+
+      a {
+        display: block;
+        background-color: #000;
+        color: #ccc;
+        padding: 10px 20px;
+        margin-bottom: 5px;
+        width: 350px;
+        text-decoration: none;
+        font-family: monospace;
+        font-size: 26px;
+      }
     </style>
   </head>
   <body>
-    <div id="logins hidden">
+    <div id="logins" class="hidden">
       <h1>Login</h1>
       <a href="/.auth/login/aad?post_login_redirect_uri=/app" title="Azure AD"
         >Azure AD</a
@@ -80,7 +92,7 @@
       >
     </div>
 
-    <div id="loggedIn hidden">
+    <div id="loggedIn" class="hidden">
       <p>Message from the server: <strong class="message"></strong></p>
       <a href="/.auth/logout">Logout</a>
     </div>
