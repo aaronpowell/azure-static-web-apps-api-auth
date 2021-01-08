@@ -24,7 +24,7 @@ const getUserInfo = (req: HttpRequest): { clientPrincipal: UserInfo } => {
 
 const isAuthenticated = (req: HttpRequest): boolean => {
   const userInfo = getUserInfo(req);
-  return userInfo.clientPrincipal !== null;
+  return !!userInfo.clientPrincipal;
 };
 
 export { getUserInfo, isAuthenticated };
