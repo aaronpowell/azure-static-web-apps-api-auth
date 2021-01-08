@@ -52,24 +52,13 @@ jobs:
           asset_name: 'aaronpowell-static-web-apps-api-auth-${{ env.tag }}.tgz'
           asset_content_type: application/zip
 
-      - run: echo ${{ steps.create_release.outputs.id }} >> release.txt
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-            name: release_id
-            path: static-web-apps-api-auth/release.txt
-
   release:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: release
     steps:
-      - name: Download package
-        uses: actions/download-artifact@v2
-        with:
-            name: release_id
-      - run: echo "release_id=$(cat release.txt)" >> $GITHUB_ENV
+      - run: echo "release_id=${{ needs.build.create_release.outputs.id  }}" >> $GITHUB_ENV
       - name: Publish release
         uses: actions/github-script@v3
         with:
@@ -84,9 +73,6 @@ jobs:
   publish-npm:
     needs: release
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: static-web-apps-api-auth
     steps:
       - uses: actions/checkout@v2
       - name: Download package
@@ -104,9 +90,6 @@ jobs:
   publish-gpr:
     needs: release
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: static-web-apps-api-auth
     steps:
       - uses: actions/checkout@v2
       - name: Download package
