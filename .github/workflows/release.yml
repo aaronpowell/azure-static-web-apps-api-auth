@@ -93,8 +93,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
             name: package
-      - run: npm ci
-      - run: npm run build
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
       - run: npm publish $(ls *.tgz) --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
@@ -111,9 +113,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: package
-      - run: npm ci
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://npm.pkg.github.com/
+          scope: "@aaronpowell"
       - run: echo "registry=https://npm.pkg.github.com/@aaronpowell" >> .npmrc
-      - run: npm run build
       - run: npm publish $(ls *.tgz) --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
