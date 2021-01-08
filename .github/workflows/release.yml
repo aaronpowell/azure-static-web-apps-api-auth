@@ -95,9 +95,9 @@ jobs:
             name: package
       - run: npm ci
       - run: npm run build
-      # - run: npm publish --access public $(ls *.tgz)
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm publish --access public $(ls *.tgz)
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-gpr:
     needs: release
@@ -114,6 +114,6 @@ jobs:
       - run: npm ci
       - run: echo "registry=https://npm.pkg.github.com/@aaronpowell" >> .npmrc
       - run: npm run build
-      # - run: npm publish --access public $(ls *.tgz)
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm publish --access public $(ls *.tgz)
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
