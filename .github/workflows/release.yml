@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: react-static-web-apps-auth
+        working-directory: static-web-apps-api-auth
     environment:
       name: build
       url: ${{ steps.create_release.outputs.html_url }}
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: react-static-web-apps-auth
+        working-directory: static-web-apps-api-auth
     steps:
       - uses: actions/checkout@v2
       - name: Download package
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: react-static-web-apps-auth
+        working-directory: static-web-apps-api-auth
     steps:
       - uses: actions/checkout@v2
       - name: Download package
