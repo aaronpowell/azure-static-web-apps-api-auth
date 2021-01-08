@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "lite-server",
-    "build": "echo 'Nothing to build...'"
+    "prebuild": "rm -rf build",
+    "build": "mkdir build && cp index.* build/"
   },
   "keywords": [],
   "author": "",
