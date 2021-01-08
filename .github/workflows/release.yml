@@ -41,7 +41,7 @@ jobs:
         with:
             name: package
             path: "static-web-apps-api-auth/*.tgz"
-      - run: echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - run: echo "tag=${GITHUB_REF##*/v}" >> $GITHUB_ENV
       - name: Upload package to release
         uses: actions/upload-release-asset@v1
         env:
