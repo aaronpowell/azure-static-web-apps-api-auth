@@ -1,6 +1,6 @@
 {
   "name": "@aaronpowell/static-web-apps-api-auth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A package to make it easier to work with Azure Static Web Apps auth in the API backend",
   "main": "build/index.js",
   "types": "build/index.d.ts",
