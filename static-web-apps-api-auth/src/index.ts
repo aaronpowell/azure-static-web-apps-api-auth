@@ -14,8 +14,11 @@ export type UserInfo = {
   userRoles: string[];
 };
 
-const getUserInfo = (req: HttpRequest): { clientPrincipal: UserInfo } => {
+const getUserInfo = (req: HttpRequest): UserInfo | null => {
   const header = req.headers["x-ms-client-principal"];
+  if (!header) {
+    return null;
+  }
   const encoded = Buffer.from(header, "base64");
   const decoded = encoded.toString("ascii");
 
@@ -24,7 +27,7 @@ const getUserInfo = (req: HttpRequest): { clientPrincipal: UserInfo } => {
 
 const isAuthenticated = (req: HttpRequest): boolean => {
   const userInfo = getUserInfo(req);
-  return userInfo !== undefined && userInfo !== null;
+  return userInfo !== null;
 };
 
 export { getUserInfo, isAuthenticated };
